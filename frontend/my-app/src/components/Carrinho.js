@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Orders from './Orders';
 
 const Cart = ({ cart, setCart }) => {
-  const removeFromCart = (product) => {
-    cart.splice(cart.indexOf(product), 1);
-    setCart([...cart]);
+    const [total, setTotal] = useState(0);
+    const [shipping, setShipping] = useState(10);
+    const [showOrder, setShowOrder] = useState(false);
+  
+    React.useEffect(() => {
+      let newTotal = 0;
+      cart.forEach(product => {
+        newTotal += product.price;
+      });
+      setTotal(newTotal + shipping);
+    }, [cart, shipping]);
+  
+    const handleRemove = product => {
+      const newCart = cart.filter(p => p.id !== product.id);
+      setCart(newCart);
+    };
+  
+    const handleOrder = () => {
+      setShowOrder(true);
+    };
+  
+    return (
+      <div>
+        { showOrder ? <Orders cart={cart} total={total} /> : (
+          <div>
+            <h2>Carrinho</h2>
+            <ul>
+              {cart.map(product => (
+                <li>
+                  <img src={require(`./assets/${product.image_url}`)} alt={product.image_url} /> ({product.price})
+                  <button onClick={() => handleRemove(product)}>Remover</button>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Total: {total}
+            </p>
+            <button onClick={handleOrder}>Pedir</button>
+          </div>
+        )}
+      </div>
+    );
   };
 
-  const total = cart.reduce((acc, current) => acc + current.price, 0);
-
-  return (
-    <div>
-      <h1>Carrinho</h1>
-      <ul>
-        {cart.map(product => (
-          <li key={product.id}>
-            {product.name} ({product.price})
-            <button onClick={() => removeFromCart(product)}>Remover</button>
-          </li>
-        ))}
-      </ul>
-      {cart.length > 0 && (
-        <p>Total: {total}</p>
-      )}
-    </div>
-  );
-};
-
 export default Cart;
-
-
