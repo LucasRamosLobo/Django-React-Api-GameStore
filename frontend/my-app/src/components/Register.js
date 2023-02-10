@@ -1,53 +1,64 @@
 import React, { useState } from 'react';
 
-function Login() {
+const Register = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [password2, setPassword2] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await fetch('http://localhost:8000/api/login/', {
+      const response = await fetch('http://localhost:8000/api/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           username,
+          email,
           password,
+          password2,
         }),
       });
+
       const data = await response.json();
-      if (data.error) {
-        setError(data.error);
-      } else {
-        localStorage.setItem('token', data.token);
-        window.location.href = '/';
-      }
-    } catch (error) {
-      setError('Erro ao fazer login. Por favor, tente novamente.');
+      console.log(data);
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
+        type="email"
+        placeholder="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
         type="text"
-        placeholder="Username"
+        placeholder="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
+      <input
+        type="password"
+        placeholder="confirme"
+        value={password2}
+        onChange={(e) => setPassword2(e.target.value)}
+      />
+      <button type="submit">Register</button>
     </form>
   );
-}
+};
 
-export default Login;
+export default Register;
