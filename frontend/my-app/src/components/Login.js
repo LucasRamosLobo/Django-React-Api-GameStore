@@ -1,53 +1,58 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function Login() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch('http://localhost:8000/api/login/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           username,
-          password,
-        }),
+          password
+        })
       });
+
       const data = await response.json();
-      if (data.error) {
-        setError(data.error);
-      } else {
-        localStorage.setItem('token', data.token);
-        window.location.href = '/';
+
+      if (data.message) {
+        setErrorMessage(data.message);
+        return;
       }
+
+      // Log in success, do something with the user data
+      console.log(data.user);
     } catch (error) {
-      setError('Erro ao fazer login. Por favor, tente novamente.');
+      setErrorMessage('Erro ao fazer login, tente novamente mais tarde');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {errorMessage && <div>{errorMessage}</div>}
       <input
         type="text"
         placeholder="Username"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={e => setUsername(e.target.value)}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
+      <button type="submit">Log In</button>
     </form>
   );
-}
+};
 
 export default Login;
