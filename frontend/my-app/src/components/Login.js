@@ -31,7 +31,7 @@ const Login = () => {
 
       // Log in success, do something with the user data
       console.log(data.user);
-      navigate('/');
+      navigate('/products');
     } catch (error) {
       setErrorMessage('Erro ao fazer login, tente novamente mais tarde');
     }
