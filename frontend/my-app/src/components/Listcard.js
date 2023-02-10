@@ -17,7 +17,7 @@ const List = () => {
     setCart([...cart, product]);
     console.log(cart)
   };
-
+  
   return (
     <div>
       <Header />
@@ -30,7 +30,7 @@ const List = () => {
             <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button></>
         ))}
       </ul>
-      <Cart cart={cart} />
+      <Cart cart={cart} setCart={setCart} />
     </div>
   );
 };
