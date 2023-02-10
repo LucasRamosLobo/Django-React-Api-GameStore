@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
@@ -30,6 +31,7 @@ const Login = () => {
 
       // Log in success, do something with the user data
       console.log(data.user);
+      navigate('/');
     } catch (error) {
       setErrorMessage('Erro ao fazer login, tente novamente mais tarde');
     }
