@@ -31,10 +31,13 @@ const Login = () => {
         setErrorMessage(data.message);
         return;
       }
-
+        if (data.user) {
+          console.log(data.user);
+          navigate('/products');
+          
+        }else{alert('coloque seus dados de login, caso nao tenha faça registro')}
       // Log in success, do something with the user data
-      console.log(data.user);
-      navigate('/products');
+
     } catch (error) {
       setErrorMessage('Erro ao fazer login, tente novamente mais tarde');
     }
