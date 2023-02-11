@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../App.css';
+import Header from './Header';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +41,10 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+    <Header />
+    <div className='container'>
+    <form className='form-group' onSubmit={handleSubmit}>
       {errorMessage && <div>{errorMessage}</div>}
       <input
         type="text"
@@ -46,14 +52,20 @@ const Login = () => {
         value={username}
         onChange={e => setUsername(e.target.value)}
       />
+      <label></label>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
-      <button type="submit">Log In</button>
+      <label></label>
+      <button className='btn' type="submit">Log In</button>
     </form>
+    
+    </div>
+    <span className='center'>nao tem uma conta ? <a href="/register">registre-se</a></span>
+    </div>
   );
 };
 
