@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Cart from './Carrinho';
+import '../App.css';
 
 const List = () => {
   const [products, setProducts] = useState([]);
@@ -19,14 +20,15 @@ const List = () => {
   };
   
   return (
-    <div>
+    <div className='list'>
       <Header />
-      <h1>Produtos</h1>
-      <ul>
+      <h1 className='center'>Produtos</h1>
+      <ul className='wrap'>
         {products.map(product => (
           <><><li key={product.id}>{product.name}</li>
+          <li>preço: {product.price}</li>
             <li><img src={require(`./assets/${product.image_url}`)} alt={product.image} /></li>
-            </><span>preço: {product.price}</span>
+            </>
             <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button></>
         ))}
       </ul>

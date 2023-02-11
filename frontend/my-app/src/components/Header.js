@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../App.css';
 
 const Header = () => {
   const [userData, setUserData] = useState({});
@@ -11,8 +12,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header>
-      <h1>Bem-vindo, {userData.username}</h1>
+    <header className='App-header'>
+      <h1>GameStore {userData.username}</h1>
     </header>
   );
 };
