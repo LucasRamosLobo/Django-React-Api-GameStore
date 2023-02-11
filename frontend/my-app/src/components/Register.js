@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,40 +27,52 @@ const Register = () => {
       });
 
       const data = await response.json();
-      console.log(data);
+      if (data){
+        navigate('/');
+        alert('usuario criado com sucesso, agora faça o login')
+      }
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+    <Header />
+    <div className='container'>
+    <form className='form-group' onSubmit={handleSubmit}>
       <input
         type="email"
         placeholder="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <label></label>
       <input
         type="text"
         placeholder="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
+      <label></label>
       <input
         type="password"
         placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <label></label>
       <input
         type="password"
         placeholder="confirme"
         value={password2}
         onChange={(e) => setPassword2(e.target.value)}
       />
-      <button type="submit">Register</button>
+      <label></label>
+      <button className='btn' type="submit">Register</button>
     </form>
+    </div>
+    </div>
   );
 };
 

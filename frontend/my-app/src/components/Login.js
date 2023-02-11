@@ -68,6 +68,7 @@ const Login = () => {
     
     </div>
     <span className='center'>nao tem uma conta ? <a href="/register">registre-se</a></span>
+    <span className='center'>caso nao queira se registrar e so ir para a rota <a href="/products"> /products</a> </span>
     </div>
   );
 };
