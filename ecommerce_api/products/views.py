@@ -1,19 +1,13 @@
 from rest_framework import viewsets
 from .models import Product
 from .serializers import ProductSerializer
-from rest_framework import generics
 from rest_framework import generics, status
 from django.contrib.auth import authenticate
 from .serializers import LoginSerializer, RegisterSerializer, UserSerializer
 from rest_framework.response import Response
 from .models import User
-from rest_framework import generics
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import IsAuthenticated
-from .serializers import UserSerializer
 
 
 @permission_classes([IsAuthenticated])
