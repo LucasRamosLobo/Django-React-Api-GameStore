@@ -31,8 +31,8 @@ const List = () => {
       <h1 className='center'>Produtos</h1>
       <div className='container'>
       <div className='sort-options'>
-        <button value='/api/price/' onClick={handleClick}>Ordenar por preço</button>
-        <button value='/api/score/' onClick={handleClick}>Ordenar por popularidade</button>
+        <button className='btn' value='/api/price/' onClick={handleClick}>Ordenar por preço</button>
+        <button className='btn' value='/api/score/' onClick={handleClick}>Ordenar por popularidade</button>
       </div>
       <ul className='wrap'>
         {products.map(product => (
