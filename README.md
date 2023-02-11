@@ -2,6 +2,12 @@
 
 Api feita em Django que é acessada pelo Fronted construido em React Web
 
+## 🚀 Docker
+
+Para rodar a aplicação no Docker basta rodar o comando abaixo na raiz do projeto
+
+docker-compose up --build
+
 ## 🚀 Backend
 
 Para iniciar basta instalar as dependências em requirements.txt e iniciar a api com os comandos:
@@ -12,7 +18,7 @@ Para iniciar basta instalar as dependências em requirements.txt e iniciar a api
 
 *python manage.py runserver
 
-### 📋 Frontend
+### 🚀 Frontend
 
 Para iniciar o Frontend é nescessário ter iniciado o Backend e escrever os comandos:
 
