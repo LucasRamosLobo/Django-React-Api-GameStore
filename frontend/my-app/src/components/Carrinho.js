@@ -28,18 +28,18 @@ const Cart = ({ cart, setCart }) => {
         { showOrder ? <Orders cart={cart} total={total} /> : (
           <div>
             <h2>Carrinho</h2>
-            <ul>
-              {cart.map(product => (
-                <li>
-                  <img src={require(`./assets/${product.image_url}`)} alt={product.image_url} /> ({product.price})
-                  <button onClick={() => handleRemove(product)}>Remover</button>
-                </li>
-              ))}
-            </ul>
-            <p>
-              Total: {total}
-            </p>
-            <button onClick={handleOrder}>Pedir</button>
+            <div className='container'>
+      <ul className='wrap'>
+        {cart.map(product => (
+          <><span className='product' key={product.id}>{product.name}<br></br> preço: {product.price}
+          
+            <img className='card-image' src={require(`./assets/${product.image_url}`)} alt={product.image} />
+            
+            <button className='card-buy-button' onClick={() => handleRemove(product)}>remover</button></span></>
+        ))}
+      </ul>
+      </div>
+            <button className='card-buy-button' onClick={handleOrder}>Pedir</button>
           </div>
         )}
       </div>

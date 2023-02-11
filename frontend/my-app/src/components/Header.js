@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className='App-header'>
-      <h1>GameStore {userData.username}</h1>
+      <h1>Bem-vindo, {userData.username}</h1>
     </header>
   );
 };

@@ -23,15 +23,17 @@ const List = () => {
     <div className='list'>
       <Header />
       <h1 className='center'>Produtos</h1>
+      <div className='container'>
       <ul className='wrap'>
         {products.map(product => (
-          <><><li key={product.id}>{product.name}</li>
-          <li>preço: {product.price}</li>
-            <li><img src={require(`./assets/${product.image_url}`)} alt={product.image} /></li>
-            </>
-            <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button></>
+          <><span className='product' key={product.id}>{product.name}<br></br> preço: {product.price}
+          
+            <img className='card-image' src={require(`./assets/${product.image_url}`)} alt={product.image} />
+            
+            <button className='card-buy-button' onClick={() => addToCart(product)}>Adicionar ao carrinho</button></span></>
         ))}
       </ul>
+      </div>
       <Cart cart={cart} setCart={setCart} />
     </div>
   );

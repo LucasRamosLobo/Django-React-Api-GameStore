@@ -23,7 +23,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.{
+.list{
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -33,15 +33,59 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  flex-wrap:wrap ;
   width: 100%;
+  
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  left:20px;
+  justify-content: center;
+  padding: 10px;
+  position:relative;
+  right: 2%;
+  text-align: center;
+}
+.card-buy-button {
+  background-color: #333;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.card-image {
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card-buy-button:hover {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0px 0px 10px #333;
 }
 .wrap{
   text-align: center;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  flex-direction: column;
+  width: 100%;
   
+  
+}
+.product{
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  margin-left: 10px;
+
+
 }
 .App-link {
   color: #61dafb;
