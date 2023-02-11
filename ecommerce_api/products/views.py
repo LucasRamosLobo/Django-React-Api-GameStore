@@ -9,6 +9,13 @@ from .models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 
+class ProductPriceView(generics.ListAPIView):
+    queryset = Product.objects.all().order_by('price')
+    serializer_class = ProductSerializer
+
+class ProductScoreView(generics.ListAPIView):
+    queryset = Product.objects.all().order_by('-score')
+    serializer_class = ProductSerializer
 
 @permission_classes([IsAuthenticated])
 class UserProfileView(generics.RetrieveAPIView):
